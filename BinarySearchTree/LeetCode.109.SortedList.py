@@ -15,13 +15,13 @@ class Solution:
     def sortedListToBST(self, head: ListNode) -> TreeNode:
         if head == None:
             return None
-        prev = tortoise = hare = head
+        achilles = tortoise = hare = head
         while hare != None and hare.next != None:
             hare = hare.next.next
-            prev, tortoise = tortoise, tortoise.next
+            achilles, tortoise = tortoise, tortoise.next
         root = TreeNode(tortoise.val)
-        if prev != tortoise:
-            prev.next = None
+        if achilles != tortoise:
+            achilles.next = None
             root.left = self.sortedListToBST(head)
         if tortoise.next != None:
             root.right = self.sortedListToBST(tortoise.next)
