@@ -1,4 +1,4 @@
-#Kadane's Algorithm
+# Maximum Subarray: O(n^2) algorithm
 
 from typing import List
 
@@ -9,12 +9,13 @@ class Solution:
             cursum = 0
             for j in range(i, len(nums)):
                 cursum += nums[j]
-                if cursum > maxsum:
-                    maxsum = cursum
+                maxsum = max(maxsum, cursum)
+                print(i, j, cursum, maxsum)
         return maxsum
 
 s = Solution()
-n = [31, -41, 59, 26, -53, 58, 97, -93, -23, 84]
+# n = [31, -41, 59, 26, -53, 58, 97, -93, -23, 84]
+n = [-2,1,-3,4,-1,2,1,-5,4]
 print(s.maxSubArray(n))
 
 

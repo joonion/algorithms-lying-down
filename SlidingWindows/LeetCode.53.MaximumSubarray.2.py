@@ -12,8 +12,7 @@ class Solution:
             for j in range(i, len(nums)):
                 cursum = cumulate[j] if i == 0 else \
                          cumulate[j] - cumulate[i - 1]
-                if cursum > maxsum:
-                    maxsum = cursum
+                maxsum = max(maxsum, cursum)
         return maxsum
 
 s = Solution()
