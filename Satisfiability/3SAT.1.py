@@ -1,13 +1,12 @@
 def satisfiable(n, m, b):
-    for i in range(2**n):
-        print(i)
-        for j in range(m):
-            v = str(bin(i)[2:])
-            for k in range(n):
-                if b[j][k] == "0":
-                    v[i] = "0" if v[i] == "1" else "1"
-            if sum(list(map(int, v))) == 0:
-                return Fa, str(bin(i)[2:])
+    for v in range(2**n):
+        for i in range(m):
+            t = v
+            for j in range(n):
+                if b[i][j] == 0:
+                    t ^= (1 << (n - j - 1))
+            if t == 0:
+                return True, v
     return False, None
 
 n, m = map(int, input().split())
@@ -15,5 +14,10 @@ b = []
 for i in range(m):
     b.append(list(map(int, input().split())))
 result, solution = satisfiable(n, m, b)
-print("Satisfiable:", result, solution)
+print("Satisfiable:", result)
+if result:
+    for i in range(n):
+        print(solution & 1, end = " ")
+        solution >>= 1
+        
    
