@@ -22,9 +22,7 @@ for i in range(m):
     
 path, dist = floyd(n, W)
 for i in range(n):
-    print(path[i])
+    print(dist[i])
 print()
 for i in range(n):
-    print(dist[i])
-
-    
+    print(path[i])

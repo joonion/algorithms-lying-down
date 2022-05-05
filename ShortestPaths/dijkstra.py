@@ -5,6 +5,8 @@ def dijkstra(n, s, W):
     dist = W[s]
     found = [False] * n
     found[s] = True
+    # print(path, '\n', dist, '\n', found)
+
     for _ in range(n - 1):
         minlength = INF
         for i in range(n):
@@ -16,7 +18,7 @@ def dijkstra(n, s, W):
             if not found[i] and dist[i] > dist[vnear] + W[vnear][i]:
                 dist[i] = dist[vnear] + W[vnear][i]
                 path[i] = vnear
-        print(found)
+        # print(path, '\n', dist, '\n', found)
     return path, dist
 
 INF = 999
@@ -29,5 +31,5 @@ for i in range(m):
     W[u][v] = w
     
 path, dist = dijkstra(n, 0, W)
-print(path, dist)
-    
+print(path)
+print(dist)
